@@ -48,7 +48,7 @@
         CAPTURE EVERY ADVENTURE.
       </h1>
       <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
-        Sewa Kamera DJI Osmo 360 Kualiti Tinggi. Sesuai untuk Travel, Motor Ride, Vlog & Event!
+        Sewa & Jual Kamera DJI Osmo / Insta360 Kualiti Tinggi. Sesuai untuk Travel, Motor Ride, Vlog & Event!
       </p>
 
       <!-- CTA Action Buttons -->
@@ -62,6 +62,58 @@
           <i class="fa-solid fa-wallet text-brandGold"></i> Bayar Deposit (RM 45)
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- BAHAGIAN TAMBAHAN 1: CARIAN JUALAN KAMERA MURAH (DJI / INSTA360) -->
+  <section class="py-10 px-4 max-w-3xl mx-auto">
+    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-200 text-center">
+      
+      <span class="bg-brandGold/20 text-brandBlue border border-brandGold px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+        <i class="fa-solid fa-cart-shopping mr-1"></i> Jualan Kamera Murah & Original
+      </span>
+      
+      <h2 class="text-2xl font-bold text-brandNavy mt-3 mb-2">Nak Beli Camera DJI Osmo / Insta360 Murah?</h2>
+      <p class="text-gray-500 text-xs mb-6">Pilih jenama dan model yang anda nak beli di bawah untuk terus semak harga & stok terkini di WhatsApp!</p>
+
+      <!-- Step 1: Pilih Brand -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-3">1. Pilih Jenama Kamera:</label>
+        <div class="grid grid-cols-2 gap-4">
+          <button type="button" onclick="selectBuyBrand('DJI')" id="buy-btn-dji" class="border-2 border-gray-200 hover:border-brandBlue p-4 rounded-2xl flex flex-col items-center justify-center transition bg-brandLight">
+            <i class="fa-solid fa-camera text-3xl text-brandBlue mb-2"></i>
+            <span class="font-bold text-sm text-brandNavy">DJI Osmo Series</span>
+          </button>
+
+          <button type="button" onclick="selectBuyBrand('Insta360')" id="buy-btn-insta" class="border-2 border-gray-200 hover:border-brandBlue p-4 rounded-2xl flex flex-col items-center justify-center transition bg-brandLight">
+            <i class="fa-solid fa-video text-3xl text-brandBlue mb-2"></i>
+            <span class="font-bold text-sm text-brandNavy">Insta360 Series</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Pilih Model -->
+      <div id="buy-model-section" class="mb-6 hidden">
+        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">2. Pilih Model Nak Beli:</label>
+        <select id="buy-camera-model-select" class="w-full p-3.5 bg-gray-50 border-2 border-brandBlue rounded-xl text-sm font-semibold text-brandNavy focus:outline-none focus:ring-2 focus:ring-brandGold">
+          <option value="">-- Pilih Model --</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Butang Ke WhatsApp -->
+      <div id="buy-whatsapp-action" class="hidden">
+        <p class="text-xs text-gray-500 mb-3">Pilih admin untuk order / tanya harga murah melalui WhatsApp:</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <button type="button" onclick="sendBuyToWhatsApp('0102258011')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-lg"></i> Tanya Admin Isya
+          </button>
+          
+          <button type="button" onclick="sendBuyToWhatsApp('0193282408')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-lg"></i> Tanya Admin Izz
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -147,42 +199,72 @@
     </div>
   </section>
 
-  <!-- Contact / Booking Options Section -->
+  <!-- BAHAGIAN TAMBAHAN 2: CONTACT, DUITNOW QR & EMBEDDED GOOGLE FORM -->
   <section id="payment-section" class="py-10 px-4 max-w-3xl mx-auto">
-    <div class="bg-brandNavy text-white p-6 sm:p-8 rounded-3xl shadow-xl text-center">
-      <h2 class="text-2xl font-bold mb-2">Pertanyaan & Tempahan Hubungi Admin</h2>
-      <p class="text-gray-300 text-xs mb-6">Klik butang di bawah untuk terus ke WhatsApp atau isi borang tempahan.</p>
-
-      <div class="grid sm:grid-cols-2 gap-4 mb-6">
-        <!-- Admin Isya -->
-        <a href="https://wa.me/60102258011" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-2xl flex items-center gap-3 transition">
-          <i class="fa-brands fa-whatsapp text-3xl"></i>
-          <div class="text-left">
-            <p class="text-xs text-emerald-200 font-semibold">Admin Isya</p>
-            <p class="font-bold text-sm">010-2258011</p>
-          </div>
-        </a>
-
-        <!-- Admin Izz -->
-        <a href="https://wa.me/60193282408" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-2xl flex items-center gap-3 transition">
-          <i class="fa-brands fa-whatsapp text-3xl"></i>
-          <div class="text-left">
-            <p class="text-xs text-emerald-200 font-semibold">Admin Izz</p>
-            <p class="font-bold text-sm">019-3282408</p>
-          </div>
-        </a>
+    <div class="bg-brandNavy text-white p-6 sm:p-8 rounded-3xl shadow-xl text-center border-2 border-brandGold">
+      
+      <!-- Header -->
+      <div class="inline-flex items-center gap-2 bg-yellow-400/20 text-brandGold border border-brandGold px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+        <i class="fa-solid fa-bolt text-yellow-400"></i> Tempahan Urgent / Lock Tarikh Instant
       </div>
 
-      <!-- Deposit Note -->
-      <div class="bg-white/10 border border-white/20 p-4 rounded-2xl flex justify-between items-center">
-        <div class="text-left">
-          <p class="text-xs text-gray-300">Deposit Cagaran (Dipulangkan):</p>
-          <p class="text-2xl font-black text-brandGold">RM 45</p>
+      <h2 class="text-2xl font-bold mb-2">Bayar Deposit & Lock Tarikh</h2>
+      <p class="text-gray-300 text-xs max-w-md mx-auto mb-6">
+        Scan DuitNow QR di bawah untuk bayaran deposit <strong>RM45</strong>, kemudian hantar resit & nombor telefon melalui borang di bawah.
+      </p>
+
+      <!-- Grid QR + Embedded Google Form -->
+      <div class="bg-white text-gray-800 rounded-2xl p-4 sm:p-6 shadow-inner text-left">
+        
+        <!-- Step 1: Scan QR DuitNow -->
+        <div class="text-center pb-6 border-b border-gray-200">
+          <p class="text-xs font-bold text-brandBlue uppercase tracking-wider mb-2">LANGKAH 1: SCAN & BAYAR RM45</p>
+          <div class="w-48 h-48 bg-gray-100 mx-auto rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center p-2 mb-2">
+            <!-- Sediakan gambar QR DuitNow anda di sini -->
+            <img src="https://via.placeholder.com/200x200?text=Scan+QR+DuitNow" alt="DuitNow QR" class="w-full h-full object-contain rounded-lg">
+          </div>
+          <p class="text-xs text-gray-500">Akaun: <strong>IZZY360 RENTAL / AHMAD IZZAN</strong></p>
+          <p class="text-xs text-emerald-600 font-semibold mt-1"><i class="fa-solid fa-circle-check"></i> Deposit RM45 dipulangkan selepas pemulangan gear</p>
         </div>
-        <a href="https://forms.gle/XJngcU99jv2oH68F7" target="_blank" class="bg-brandGold text-brandNavy px-4 py-2 rounded-xl text-xs font-bold hover:bg-yellow-400 transition">
-          Isi Borang
-        </a>
+
+        <!-- Step 2: Embedded Form / Link Borang Anda -->
+        <div class="pt-6">
+          <p class="text-xs font-bold text-brandBlue uppercase tracking-wider mb-3 text-center">LANGKAH 2: HANTAR RESIT & ISi BORANG</p>
+          
+          <div class="text-center">
+            <p class="text-xs text-gray-600 mb-4">Sila tekan butang di bawah untuk muat naik resit dan sahkan tempahan anda:</p>
+            <a href="https://forms.gle/XJngcU99jv2oH68F7" target="_blank" class="inline-flex items-center justify-center gap-2 w-full bg-brandGold text-brandNavy font-black py-3.5 px-6 rounded-xl shadow-md hover:bg-yellow-400 transition text-sm uppercase tracking-wide">
+              <i class="fa-regular fa-file-lines text-lg"></i> Buka Borang Tempahan & Hantar Resit
+            </a>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Hubungi Admin WhatsApp -->
+      <div class="mt-8 pt-6 border-t border-white/10 text-left">
+        <p class="text-xs text-gray-300 text-center mb-4">Pertanyaan / Hubungi Admin Terus:</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <!-- Admin Isya -->
+          <a href="https://wa.me/60102258011" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-2xl flex items-center gap-3 transition">
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
+            <div>
+              <p class="text-xs text-emerald-200 font-semibold">Admin Isya</p>
+              <p class="font-bold text-sm">010-2258011</p>
+            </div>
+          </a>
+
+          <!-- Admin Izz -->
+          <a href="https://wa.me/60193282408" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-2xl flex items-center gap-3 transition">
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
+            <div>
+              <p class="text-xs text-emerald-200 font-semibold">Admin Izz</p>
+              <p class="font-bold text-sm">019-3282408</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -198,6 +280,72 @@
       <p>© 2026 IZZY360 RENTAL. Safe, Reliable & Worry Free.</p>
     </div>
   </footer>
+
+  <!-- Script Logik Jualan Kamera -->
+  <script>
+    let selectedBuyBrand = '';
+
+    const buyModels = {
+      'DJI': [
+        'DJI Osmo 360',
+        'DJI Osmo Action 4',
+        'DJI Osmo Pocket 3',
+        'DJI Action 3'
+      ],
+      'Insta360': [
+        'Insta360 X3',
+        'Insta360 X4',
+        'Insta360 ONE X2',
+        'Insta360 GO 3'
+      ]
+    };
+
+    function selectBuyBrand(brand) {
+      selectedBuyBrand = brand;
+      
+      document.getElementById('buy-btn-dji').classList.remove('border-brandGold', 'bg-yellow-50');
+      document.getElementById('buy-btn-insta').classList.remove('border-brandGold', 'bg-yellow-50');
+
+      if(brand === 'DJI') {
+        document.getElementById('buy-btn-dji').classList.add('border-brandGold', 'bg-yellow-50');
+      } else {
+        document.getElementById('buy-btn-insta').classList.add('border-brandGold', 'bg-yellow-50');
+      }
+
+      const modelSelect = document.getElementById('buy-camera-model-select');
+      modelSelect.innerHTML = '<option value="">-- Pilih Model --</option>';
+
+      buyModels[brand].forEach(model => {
+        const option = document.createElement('option');
+        option.value = model;
+        option.textContent = model;
+        modelSelect.appendChild(option);
+      });
+
+      document.getElementById('buy-model-section').classList.remove('hidden');
+      document.getElementById('buy-whatsapp-action').classList.remove('hidden');
+    }
+
+    function sendBuyToWhatsApp(phoneNo) {
+      const modelSelect = document.getElementById('buy-camera-model-select');
+      const selectedModel = modelSelect.value;
+
+      if (!selectedBuyBrand) {
+        alert('Sila pilih Jenama Kamera (DJI atau Insta360) terlebih dahulu.');
+        return;
+      }
+
+      let message = '';
+      if (selectedModel) {
+        message = `Hai Admin, saya nak beli camera ${selectedBuyBrand} model ${selectedModel}. Boleh tahu harga best price & stok ada tak?`;
+      } else {
+        message = `Hai Admin, saya berminat nak beli camera siri ${selectedBuyBrand}. Boleh bagi senarai harga murah & stok terkini?`;
+      }
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/60${phoneNo}?text=${encodedMessage}`, '_blank');
+    }
+  </script>
 
 </body>
 </html>
