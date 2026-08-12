@@ -242,7 +242,7 @@
         <ul class="space-y-3 mb-6 text-sm text-gray-300">
           <li class="flex justify-between border-b border-white/10 pb-2"><span>1 - 2 Days</span> <strong class="text-brandGold">RM 45 / day</strong></li>
           <li class="flex justify-between border-b border-white/10 pb-2"><span>3 - 4 Days</span> <strong class="text-brandGold">RM 40 / day</strong></li>
-          <li class="flex justify-between border-b border-white/10 pb-2"><span>5 - 10 Days & above</span> <span class="text-xs font-semibold bg-brandGold/20 text-brandGold px-2 py-0.5 rounded">Negotiable</span></li>
+          <li class="flex justify-between border-b border-white/10 pb-2"><span>5 Days & above</span> <span class="text-xs font-semibold bg-brandGold/20 text-brandGold px-2 py-0.5 rounded">Special Discount / Free Day</span></li>
         </ul>
         <a href="#calendar-section" class="block text-center w-full py-3 rounded-xl border border-brandGold text-brandGold font-bold hover:bg-brandGold hover:text-brandNavy transition text-xs uppercase tracking-wider">
           Book Standard Rate
@@ -261,6 +261,7 @@
         <ul class="space-y-3 mb-6 text-sm text-gray-300">
           <li class="flex justify-between border-b border-white/10 pb-2"><span>1 - 2 Days</span> <strong class="text-brandGold">RM 40 / day</strong></li>
           <li class="flex justify-between border-b border-white/10 pb-2"><span>3 - 4 Days</span> <strong class="text-brandGold">RM 35 / day</strong></li>
+          <li class="flex justify-between border-b border-white/10 pb-2"><span>5 Days & above</span> <span class="text-xs font-semibold bg-brandGold/20 text-brandGold px-2 py-0.5 rounded">Special Discount / Free Day</span></li>
           <li class="text-xs text-gray-400 italic">* Student ID verification required upon pickup</li>
         </ul>
         <a href="#calendar-section" class="block text-center w-full py-3 rounded-xl bg-brandGold text-brandNavy font-black hover:bg-brandGoldHover transition text-xs uppercase tracking-wider shadow-lg">
@@ -270,7 +271,7 @@
     </div>
   </section>
 
-  <!-- RENTAL CALCULATOR SECTION (CIRI KALKULATOR BAHARU) -->
+  <!-- RENTAL CALCULATOR SECTION (UPDATED CALCULATION LOGIC) -->
   <section class="py-6 px-4 max-w-3xl mx-auto">
     <div class="glass-card p-6 sm:p-8 rounded-3xl border border-brandGold/40 text-center relative">
       <span class="bg-brandGold/20 text-brandGold border border-brandGold/40 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
@@ -297,8 +298,12 @@
       <!-- Live Result Box -->
       <div class="bg-brandNavy/80 p-4 rounded-2xl border border-white/10 mb-6 text-left space-y-2">
         <div class="flex justify-between text-xs text-gray-300">
-          <span>Kadar Harian:</span>
+          <span>Kadar Asas Harian:</span>
           <strong id="calcRateText" class="text-brandGold">RM 45 / hari</strong>
+        </div>
+        <div class="flex justify-between text-xs text-gray-300">
+          <span>Diskaun / Tawaran Khas:</span>
+          <strong id="calcDiscountText" class="text-emerald-400">Tiada</strong>
         </div>
         <div class="flex justify-between text-xs text-gray-300">
           <span>Deposit Keselamatan (Refundable):</span>
@@ -552,22 +557,51 @@
       calculateRental(); // Run initial calculation
     });
 
-    // --- LOGIK KALKULATOR SEWAAN AUTOMATIK ---
+    // --- LOGIK KALKULATOR SEWAAN AUTOMATIK (UPDATED) ---
     function calculateRental() {
       const cat = document.getElementById('calcCategory').value;
       const days = parseInt(document.getElementById('calcDays').value) || 1;
+      
       let rate = 45;
-
       if (cat === 'student') {
         rate = days >= 3 ? 35 : 40;
       } else {
         rate = days >= 3 ? 40 : 45;
       }
 
-      const totalRental = rate * days;
+      let rawRental = rate * days;
+      let totalRental = rawRental;
+      let discountText = "Tiada";
+      let freeDaysCount = 0;
+
+      if (cat === 'non-student') {
+        if (days === 5) {
+          totalRental -= 5;
+          discountText = "Potongan RM 5";
+        } else if (days >= 6 && days <= 7) {
+          totalRental -= 10;
+          discountText = "Potongan RM 10";
+        } else if (days >= 8) {
+          totalRental -= 15;
+          freeDaysCount = Math.floor(days / 8); // Contoh ringkas atau 1 hari free tambahan
+          discountText = "Potongan RM 15 + 1 Hari Free";
+        }
+      } else {
+        // Student logic
+        if (days >= 5 && days <= 6) {
+          totalRental -= 5;
+          discountText = "Potongan RM 5";
+        } else if (days >= 7) {
+          totalRental -= 5;
+          freeDaysCount = 1;
+          discountText = "Potongan RM 5 + 1 Hari Free";
+        }
+      }
+
       const totalOverall = totalRental + 45; // Deposit fixed RM 45
 
       document.getElementById('calcRateText').innerText = `RM ${rate} / hari`;
+      document.getElementById('calcDiscountText').innerText = discountText;
       document.getElementById('calcTotalText').innerText = `RM ${totalOverall} (Sewa RM${totalRental} + Deposit RM45)`;
     }
 
@@ -575,12 +609,14 @@
       const cat = document.getElementById('calcCategory').options[document.getElementById('calcCategory').selectedIndex].text;
       const days = document.getElementById('calcDays').value || 1;
       const rateText = document.getElementById('calcRateText').innerText;
+      const discountText = document.getElementById('calcDiscountText').innerText;
       const totalText = document.getElementById('calcTotalText').innerText;
 
       const message = `Hi Admin, saya nak semak slot sewaan Osmo 360:\n\n` +
                       `• Kategori: ${cat}\n` +
                       `• Tempoh: ${days} Hari\n` +
-                      `• Kadar: ${rateText}\n` +
+                      `• Kadar Asas: ${rateText}\n` +
+                      `• Diskaun: ${discountText}\n` +
                       `• Anggaran Jumlah: ${totalText}\n\n` +
                       `Adakah tarikh sewaan masih available?`;
 
