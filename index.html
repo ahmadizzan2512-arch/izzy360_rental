@@ -92,36 +92,30 @@
       <h2 class="text-2xl font-bold text-brandNavy mt-3 mb-2">Nak Beli Camera DJI Osmo / Insta360 Murah?</h2>
       <p class="text-gray-500 text-xs mb-6">Pilih jenama dan model yang anda nak beli di bawah untuk terus semak harga & stok terkini di WhatsApp!</p>
 
-      <!-- Step 1: Pilih Brand (Dengan Latar Belakang Gambar Full & Animasi) -->
+      <!-- Step 1: Pilih Brand -->
       <div class="mb-6">
         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-3">1. Pilih Jenama Kamera:</label>
         <div class="grid grid-cols-2 gap-4 sm:gap-6">
           
           <!-- Kad DJI -->
           <button type="button" onclick="selectBuyBrand('DJI')" id="buy-btn-dji" class="brand-card relative h-48 sm:h-52 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
-            <!-- Background Image -->
             <div class="brand-bg absolute inset-0 bg-cover bg-center transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=800&auto=format&fit=crop');"></div>
-            <!-- Dark Overlay for Readability -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 group-hover:from-black/80 transition-opacity"></div>
             
-            <!-- Content Inside Card -->
             <div class="relative z-10 h-full p-4 flex flex-col justify-between">
               <span class="self-start text-[10px] uppercase font-black bg-brandGold text-brandNavy px-2.5 py-0.5 rounded-full tracking-wider shadow">DJI Official</span>
               <div>
                 <p class="text-white font-black text-lg sm:text-xl drop-shadow-md tracking-wide">DJI Osmo</p>
-                <p class="text-gray-300 text-xs font-medium">Action & Pocket Series</p>
+                <p class="text-gray-300 text-xs font-medium">Action, Pocket & Drones</p>
               </div>
             </div>
           </button>
 
           <!-- Kad Insta360 -->
           <button type="button" onclick="selectBuyBrand('Insta360')" id="buy-btn-insta" class="brand-card relative h-48 sm:h-52 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
-            <!-- Background Image -->
             <div class="brand-bg absolute inset-0 bg-cover bg-center transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop');"></div>
-            <!-- Dark Overlay for Readability -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 group-hover:from-black/80 transition-opacity"></div>
             
-            <!-- Content Inside Card -->
             <div class="relative z-10 h-full p-4 flex flex-col justify-between">
               <div class="flex items-center gap-1">
                 <img src="https://api.iconify.design/simple-icons:insta360.svg" alt="Insta360" class="h-5 w-5 invert">
@@ -129,7 +123,7 @@
               </div>
               <div>
                 <p class="text-white font-black text-lg sm:text-xl drop-shadow-md tracking-wide">Insta360</p>
-                <p class="text-gray-300 text-xs font-medium">360° & GO Series</p>
+                <p class="text-gray-300 text-xs font-medium">X, GO & Ace Pro Series</p>
               </div>
             </div>
           </button>
@@ -265,7 +259,6 @@
 
       <!-- Maklumat Bank & QR -->
       <div class="bg-brandLight p-4 rounded-2xl border border-gray-200 text-center mb-4">
-        <!-- QR Code Placeholder -->
         <div class="w-40 h-40 mx-auto bg-white p-2 rounded-xl border border-gray-300 shadow-sm mb-3">
           <img src="https://via.placeholder.com/200x200?text=Maybank+QR+Isya" alt="DuitNow QR Maybank Isya" class="w-full h-full object-contain rounded-lg">
         </div>
@@ -334,21 +327,55 @@
       }
     });
 
-    // --- LOGIK JUALAN KAMERA ---
+    // --- LOGIK JUALAN KAMERA (LENGKAP SEMUA SIRI) ---
     let selectedBuyBrand = '';
 
     const buyModels = {
       'DJI': [
-        'DJI Osmo 360',
-        'DJI Osmo Action 4',
+        // Pocket Series
         'DJI Osmo Pocket 3',
-        'DJI Action 3'
+        'DJI Pocket 2',
+        'DJI Osmo Pocket (Gen 1)',
+        // Action Series
+        'DJI Osmo Action 5 Pro',
+        'DJI Osmo Action 4',
+        'DJI Osmo Action 3',
+        'DJI Action 2',
+        'DJI Osmo Action (Gen 1)',
+        // Gimbal Series
+        'DJI Osmo Mobile 6 (OM6)',
+        'DJI Osmo Mobile SE',
+        'DJI Osmo Mobile 5 (OM5)',
+        // Drones / Aerial
+        'DJI Mini 4 Pro',
+        'DJI Mini 3 Pro / Mini 3',
+        'DJI Avata 2 / Avata',
+        'DJI Neo',
+        // Audio
+        'DJI Mic 2',
+        'DJI Mic',
+        'Model DJI Lain / Aksesori'
       ],
       'Insta360': [
-        'Insta360 X3',
+        // 360 X Series
+        'Insta360 X5 Pro / X5',
         'Insta360 X4',
+        'Insta360 X3',
         'Insta360 ONE X2',
-        'Insta360 GO 3'
+        'Insta360 ONE X',
+        // Tiny GO Series
+        'Insta360 GO 3S',
+        'Insta360 GO 3',
+        'Insta360 GO 2',
+        // Ace / Action Series
+        'Insta360 Ace Pro 2',
+        'Insta360 Ace Pro',
+        'Insta360 Ace',
+        // Modular & Gimbal
+        'Insta360 ONE RS (1-Inch 360 / Twin)',
+        'Insta360 ONE R',
+        'Insta360 Flow (Smartphone Gimbal)',
+        'Model Insta360 Lain / Aksesori'
       ]
     };
 
