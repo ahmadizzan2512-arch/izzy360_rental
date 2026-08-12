@@ -270,6 +270,58 @@
     </div>
   </section>
 
+  <!-- RENTAL CALCULATOR SECTION (CIRI KALKULATOR BAHARU) -->
+  <section class="py-6 px-4 max-w-3xl mx-auto">
+    <div class="glass-card p-6 sm:p-8 rounded-3xl border border-brandGold/40 text-center relative">
+      <span class="bg-brandGold/20 text-brandGold border border-brandGold/40 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
+        <i class="fa-solid fa-calculator mr-1"></i> Quick Rental Estimator
+      </span>
+      <h2 class="text-xl font-extrabold text-white mt-3 mb-1">Kira Anggaran Sewa & Deposit</h2>
+      <p class="text-gray-400 text-xs mb-6">Pilih kategori dan bilangan hari untuk kirim anggaran tepat ke WhatsApp Admin.</p>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-6 text-left">
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-2 uppercase tracking-wider">Kategori Penyewa:</label>
+          <select id="calcCategory" onchange="calculateRental()" class="w-full p-3 bg-brandNavy border border-white/20 rounded-xl text-xs text-white focus:outline-none focus:border-brandGold">
+            <option value="non-student">Non-Student (Standard Rate)</option>
+            <option value="student">Student (Student Rate)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-2 uppercase tracking-wider">Jumlah Hari Sewaan:</label>
+          <input type="number" id="calcDays" min="1" max="30" value="1" oninput="calculateRental()" class="w-full p-3 bg-brandNavy border border-white/20 rounded-xl text-xs text-white focus:outline-none focus:border-brandGold">
+        </div>
+      </div>
+
+      <!-- Live Result Box -->
+      <div class="bg-brandNavy/80 p-4 rounded-2xl border border-white/10 mb-6 text-left space-y-2">
+        <div class="flex justify-between text-xs text-gray-300">
+          <span>Kadar Harian:</span>
+          <strong id="calcRateText" class="text-brandGold">RM 45 / hari</strong>
+        </div>
+        <div class="flex justify-between text-xs text-gray-300">
+          <span>Deposit Keselamatan (Refundable):</span>
+          <strong class="text-emerald-400">RM 45</strong>
+        </div>
+        <div class="border-t border-white/10 pt-2 flex justify-between text-sm text-white font-bold">
+          <span>Anggaran Jumlah Keseluruhan:</span>
+          <span id="calcTotalText" class="text-brandGold text-base font-black">RM 90</span>
+        </div>
+      </div>
+
+      <!-- Quick WhatsApp Send -->
+      <div class="grid sm:grid-cols-2 gap-3">
+        <button type="button" onclick="sendCalcToWhatsApp('0102258011')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 text-xs">
+          <i class="fa-brands fa-whatsapp text-base"></i> Tempah Anggaran (Admin Isya)
+        </button>
+        <button type="button" onclick="sendCalcToWhatsApp('0193282408')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 text-xs">
+          <i class="fa-brands fa-whatsapp text-base"></i> Tempah Anggaran (Admin Izz)
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- GOOGLE CALENDAR & BOOKING SECTION -->
   <section id="calendar-section" class="py-10 px-4 max-w-3xl mx-auto">
     <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-brandGold/60 text-center relative">
@@ -497,7 +549,43 @@
       if (iframe && MY_CALENDAR_ID) {
         iframe.src = `https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FKuala_Lumpur&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=${encodeURIComponent(MY_CALENDAR_ID)}`;
       }
+      calculateRental(); // Run initial calculation
     });
+
+    // --- LOGIK KALKULATOR SEWAAN AUTOMATIK ---
+    function calculateRental() {
+      const cat = document.getElementById('calcCategory').value;
+      const days = parseInt(document.getElementById('calcDays').value) || 1;
+      let rate = 45;
+
+      if (cat === 'student') {
+        rate = days >= 3 ? 35 : 40;
+      } else {
+        rate = days >= 3 ? 40 : 45;
+      }
+
+      const totalRental = rate * days;
+      const totalOverall = totalRental + 45; // Deposit fixed RM 45
+
+      document.getElementById('calcRateText').innerText = `RM ${rate} / hari`;
+      document.getElementById('calcTotalText').innerText = `RM ${totalOverall} (Sewa RM${totalRental} + Deposit RM45)`;
+    }
+
+    function sendCalcToWhatsApp(phoneNo) {
+      const cat = document.getElementById('calcCategory').options[document.getElementById('calcCategory').selectedIndex].text;
+      const days = document.getElementById('calcDays').value || 1;
+      const rateText = document.getElementById('calcRateText').innerText;
+      const totalText = document.getElementById('calcTotalText').innerText;
+
+      const message = `Hi Admin, saya nak semak slot sewaan Osmo 360:\n\n` +
+                      `• Kategori: ${cat}\n` +
+                      `• Tempoh: ${days} Hari\n` +
+                      `• Kadar: ${rateText}\n` +
+                      `• Anggaran Jumlah: ${totalText}\n\n` +
+                      `Adakah tarikh sewaan masih available?`;
+
+      window.open(`https://wa.me/60${phoneNo}?text=${encodeURIComponent(message)}`, '_blank');
+    }
 
     // --- FUNCTION UNLOCK BUTTON PAYMENT SERTAMERTA ---
     function unlockPaymentButton() {
