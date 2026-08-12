@@ -305,10 +305,17 @@
         </a>
       </div>
 
-      <!-- Action Button -->
-      <button onclick="openPaymentModal()" class="w-full bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2">
-        <i class="fa-solid fa-wallet text-lg"></i> DATE IS AVAILABLE - PAY DEPOSIT NOW (RM45)
-      </button>
+      <!-- Action Buttons -->
+      <div class="space-y-3">
+        <button onclick="openPaymentModal()" class="w-full bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2">
+          <i class="fa-solid fa-wallet text-lg"></i> DATE IS AVAILABLE - PAY DEPOSIT NOW (RM45)
+        </button>
+
+        <!-- BUTANG TERUS KE GOOGLE FORM T&C -->
+        <a href="https://forms.gle/XJngcU99jv2oH68F7" target="_blank" class="w-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-2xl text-xs uppercase tracking-wide transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-file-signature text-brandGold"></i> Fill In Rental T&C Form (Google Form)
+        </a>
+      </div>
 
       <!-- Contact Admin Direct -->
       <div class="mt-6 pt-4 border-t border-white/10 text-center">
@@ -341,7 +348,6 @@
       <!-- Maklumat Bank & Gambar QR Maybank Aleysya -->
       <div class="glass-card p-4 rounded-2xl border border-white/10 text-center mb-4">
         <div class="w-52 mx-auto bg-white p-2.5 rounded-2xl border border-gray-300 shadow-sm mb-3">
-          <!-- Menggunakan fail gambar QR yang dimuat naik ke GitHub tadi -->
           <img src="3d433686-64da-46e5-919b-f9df0a582b11.jpeg" alt="Maybank QR Aleysya Nur Umaira" class="w-full h-auto object-contain rounded-xl">
         </div>
         
@@ -396,7 +402,7 @@
 
   <!-- SCRIPT LOGIC -->
   <script>
-    const TELEGRAM_BOT_TOKEN = '8855826669:AAHVa062QwQXzAuvdyISkoa-Ifm3N2hR2Rs';
+    const TELEGRAM_BOT_TOKEN = '8855826669:AAHVa062QXQXzAuvdyISkoa-Ifm3N2hR2Rs';
     const TELEGRAM_CHAT_ID = '578429174'; 
     const MY_CALENDAR_ID = '8451c5e4ac1b1a604e21ef369c1314070e987f1b9e55771b41531f3dacfc9a35@group.calendar.google.com';
 
