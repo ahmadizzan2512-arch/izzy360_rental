@@ -279,7 +279,7 @@
       </span>
       <h2 class="text-2xl font-black text-white mb-2">Check Osmo 360 Availability</h2>
       <p class="text-gray-300 text-xs max-w-md mx-auto mb-6">
-        Sila semak kalendar di bawah. If marked <strong>BOOKED / BUSY</strong>, means camera is unavailable. Jika tarikh anda CLEAR, click the payment button below!
+        Sila semak kalendar di bawah. Jika tarikh anda CLEAR, sila isi <strong>Google Form T&C</strong> terlebih dahulu untuk unlock butang pembayaran deposit.
       </p>
 
       <!-- Embedded Google Calendar -->
@@ -305,16 +305,19 @@
         </a>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="space-y-3">
-        <button onclick="openPaymentModal()" class="w-full bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2">
-          <i class="fa-solid fa-wallet text-lg"></i> DATE IS AVAILABLE - PAY DEPOSIT NOW (RM45)
-        </button>
+      <!-- Action Steps (Bukan butang biasa) -->
+      <div class="space-y-3 text-left">
+        <p class="text-xs font-bold text-gray-300 text-center mb-1 uppercase tracking-wider">Follow 2 Easy Steps To Book:</p>
 
-        <!-- BUTANG TERUS KE GOOGLE FORM T&C -->
-        <a href="https://forms.gle/XJngcU99jv2oH68F7" target="_blank" class="w-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-2xl text-xs uppercase tracking-wide transition flex items-center justify-center gap-2">
-          <i class="fa-solid fa-file-signature text-brandGold"></i> Fill In Rental T&C Form (Google Form)
+        <!-- STEP 1: FILL FORM FIRST -->
+        <a href="https://forms.gle/XJngcU99jv2oH68F7" target="_blank" onclick="unlockPaymentButton()" class="w-full bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2">
+          <i class="fa-solid fa-file-signature text-lg"></i> 1. FILL IN RENTAL T&C FORM (GOOGLE FORM)
         </a>
+
+        <!-- STEP 2: PAY DEPOSIT (LOCKED BY DEFAULT) -->
+        <button id="payDepositBtn" disabled onclick="openPaymentModal()" class="w-full bg-gray-700 text-gray-400 cursor-not-allowed font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-lock text-base" id="payLockIcon"></i> <span id="payBtnText">2. PAY DEPOSIT (LOCKED - COMPLETE STEP 1 FIRST)</span>
+        </button>
       </div>
 
       <!-- Contact Admin Direct -->
@@ -375,12 +378,18 @@
           <input type="file" id="userReceipt" accept="image/*,.pdf" required class="w-full p-2 bg-white/5 border border-white/20 rounded-xl text-xs text-gray-400">
         </div>
 
-        <p class="text-[10px] text-amber-300 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20 leading-tight">
-          <i class="fa-solid fa-circle-info"></i> Your receipt will be automatically sent to admin Telegram for quick approval.
-        </p>
+        <!-- CHECKBOX PERSETUJUAN T&C MANDATORI -->
+        <div class="p-3 bg-white/5 border border-white/10 rounded-xl">
+          <label class="flex items-start gap-2.5 cursor-pointer">
+            <input type="checkbox" id="tncCheck" required class="mt-0.5 accent-brandGold w-4 h-4 rounded">
+            <span class="text-[11px] text-gray-300 leading-tight">
+              Saya mengesahkan telah mengisi Google Form dan bersetuju 100% dengan semua <strong>Terma & Syarat (T&C) IZZY360 RENTAL</strong>.
+            </span>
+          </label>
+        </div>
 
         <button type="submit" id="submitBtn" class="w-full bg-brandGold text-brandNavy font-black py-3.5 rounded-xl text-xs uppercase tracking-wide hover:bg-brandGoldHover transition shadow-lg flex justify-center items-center gap-2">
-          Submit Receipt & Proceed To T&C Form
+          Submit Receipt To Admin
         </button>
       </form>
 
@@ -402,6 +411,7 @@
 
   <!-- SCRIPT LOGIC -->
   <script>
+    // MASUKKAN API TOKEN BOT TELEGRAM BAHARU ANDA DI SINI
     const TELEGRAM_BOT_TOKEN = '8855826669:AAHVa062QXQXzAuvdyISkoa-Ifm3N2hR2Rs';
     const TELEGRAM_CHAT_ID = '578429174'; 
     const MY_CALENDAR_ID = '8451c5e4ac1b1a604e21ef369c1314070e987f1b9e55771b41531f3dacfc9a35@group.calendar.google.com';
@@ -412,6 +422,20 @@
         iframe.src = `https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FKuala_Lumpur&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=${encodeURIComponent(MY_CALENDAR_ID)}`;
       }
     });
+
+    // --- FUNCTION UNLOCK BUTTON PAYMENT ---
+    function unlockPaymentButton() {
+      const payBtn = document.getElementById('payDepositBtn');
+      const payLockIcon = document.getElementById('payLockIcon');
+      const payBtnText = document.getElementById('payBtnText');
+
+      setTimeout(() => {
+        payBtn.disabled = false;
+        payBtn.className = "w-full bg-emerald-500 hover:bg-emerald-400 text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2 gold-glow";
+        payLockIcon.className = "fa-solid fa-lock-open text-base";
+        payBtnText.innerHTML = "2. PAY DEPOSIT NOW (RM45) 🔓";
+      }, 1000);
+    }
 
     // --- CAMERA SALES SELECTION LOGIC ---
     let selectedBuyBrand = '';
@@ -497,6 +521,7 @@
     }
 
     function closePaymentModal() {
+      document.getElementById('paymentModal').classList.hidden = true;
       document.getElementById('paymentModal').classList.add('hidden');
     }
 
@@ -506,10 +531,16 @@
       const phoneInput = document.getElementById('userPhone').value;
       const datesInput = document.getElementById('userDates').value;
       const fileInput = document.getElementById('userReceipt').files[0];
+      const tncChecked = document.getElementById('tncCheck').checked;
       const submitBtn = document.getElementById('submitBtn');
 
       if (!phoneInput || !datesInput || !fileInput) {
         alert('Please complete phone number, rental dates, and upload the receipt.');
+        return;
+      }
+
+      if (!tncChecked) {
+        alert('Sila tandakan (tick) kotak persetujuan Terma & Syarat (T&C) terlebih dahulu.');
         return;
       }
 
@@ -523,7 +554,7 @@
       const formData = new FormData();
       formData.append('chat_id', TELEGRAM_CHAT_ID);
       formData.append(fileParamName, fileInput);
-      formData.append('caption', `📥 NEW IZZY360 BOOKING RECEIPT\n\n📱 WhatsApp No: ${phoneInput}\n📅 Rental Dates: ${datesInput}`);
+      formData.append('caption', `📥 NEW IZZY360 BOOKING RECEIPT\n\n📱 WhatsApp No: ${phoneInput}\n📅 Rental Dates: ${datesInput}\n✅ T&C Accepted: YES`);
 
       try {
         const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${apiEndpoint}`, {
@@ -534,9 +565,8 @@
         const result = await response.json();
 
         if (result.ok) {
-          alert('Receipt successfully sent! Redirecting you to T&C Form.');
+          alert('Resit berjaya dihantar ke Admin! Terima kasih atas sewaan anda.');
           closePaymentModal();
-          window.open('https://forms.gle/XJngcU99jv2oH68F7', '_blank');
         } else {
           alert(`Failed to send receipt!\nError: ${result.description}`);
         }
@@ -544,7 +574,7 @@
         alert('Network connection error. Please try again.');
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Submit Receipt & Proceed To T&C Form';
+        submitBtn.innerHTML = 'Submit Receipt To Admin';
       }
     }
   </script>
