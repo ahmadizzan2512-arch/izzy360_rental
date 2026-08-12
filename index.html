@@ -276,7 +276,7 @@
   <script>
     // --- INTEGRASI BOT TELEGRAM & GOOGLE CALENDAR ---
     const TELEGRAM_BOT_TOKEN = '8740770307:AAH2byimwUhnbHFxPQ-_jn_WTYTVt76Jzo8';
-    const TELEGRAM_CHAT_ID = '578429174';
+    const TELEGRAM_CHAT_ID = '578429174'; 
     const MY_CALENDAR_ID = '8451c5e4ac1b1a604e21ef369c1314070e987f1b9e55771b41531f3dacfc9a35@group.calendar.google.com';
 
     // Masukkan Google Calendar ke Iframe
@@ -373,18 +373,21 @@
         return;
       }
 
-      // Tukar teks butang semasa menghantar
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sedang Dihantar...';
 
+      // Semak jenis fail (Gambar vs PDF)
+      const isDocument = fileInput.type.includes('pdf') || !fileInput.type.includes('image');
+      const apiEndpoint = isDocument ? 'sendDocument' : 'sendPhoto';
+      const fileParamName = isDocument ? 'document' : 'photo';
+
       const formData = new FormData();
       formData.append('chat_id', TELEGRAM_CHAT_ID);
-      formData.append('photo', fileInput);
-      formData.append('caption', `📥 *TEMPAHAN BAHARU IZZY360*\n\n📱 *No. WhatsApp:* ${phoneInput}\n📅 *Tarikh Sewa:* ${datesInput}`);
-      formData.append('parse_mode', 'Markdown');
+      formData.append(fileParamName, fileInput);
+      formData.append('caption', `📥 TEMPAHAN BAHARU IZZY360\n\n📱 No. WhatsApp: ${phoneInput}\n📅 Tarikh Sewa: ${datesInput}`);
 
       try {
-        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${apiEndpoint}`, {
           method: 'POST',
           body: formData
         });
@@ -394,15 +397,14 @@
         if (result.ok) {
           alert('Resit berjaya dihantar ke Telegram! Anda kini akan dibawa ke Borang T&C.');
           closePaymentModal();
-          // Buka Google Form Borang T&C selepas selesai hantar
           window.open('https://forms.gle/XJngcU99jv2oH68F7', '_blank');
         } else {
-          alert('Gagal menghantar. Sila pastikan anda telah menekan "Start" pada @izzy360Bot di Telegram.');
-          console.error(result);
+          alert(`Gagal dihantar!\nSebab Ralat: ${result.description}`);
+          console.error('Telegram Error:', result);
         }
       } catch (error) {
         alert('Ralat sambungan internet. Sila cuba lagi.');
-        console.error(error);
+        console.error('Network Error:', error);
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Hantar Resit & Teruskan Ke Borang T&C';
