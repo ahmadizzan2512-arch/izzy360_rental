@@ -378,21 +378,97 @@
           <input type="file" id="userReceipt" accept="image/*,.pdf" required class="w-full p-2 bg-white/5 border border-white/20 rounded-xl text-xs text-gray-400">
         </div>
 
-        <!-- CHECKBOX PERSETUJUAN T&C MANDATORI -->
-        <div class="p-3 bg-white/5 border border-white/10 rounded-xl">
+        <!-- CHECKBOX PERSETUJUAN T&C MANDATORI (DENGAN KLIK POP-UP T&C) -->
+        <div class="p-3 bg-white/5 border border-white/10 rounded-xl mt-3">
           <label class="flex items-start gap-2.5 cursor-pointer">
             <input type="checkbox" id="tncCheck" required class="mt-0.5 accent-brandGold w-4 h-4 rounded">
             <span class="text-[11px] text-gray-300 leading-tight">
-              Saya mengesahkan telah mengisi Google Form dan bersetuju 100% dengan semua <strong>Terma & Syarat (T&C) IZZY360 RENTAL</strong>.
+              Saya mengesahkan telah mengisi Google Form dan bersetuju 100% dengan semua 
+              <strong onclick="openTncModal()" class="text-brandGold underline hover:text-brandGoldHover transition cursor-pointer">
+                Terma & Syarat (T&C) IZZY360 RENTAL
+              </strong>.
             </span>
           </label>
         </div>
 
-        <button type="submit" id="submitBtn" class="w-full bg-brandGold text-brandNavy font-black py-3.5 rounded-xl text-xs uppercase tracking-wide hover:bg-brandGoldHover transition shadow-lg flex justify-center items-center gap-2">
+        <button type="submit" id="submitBtn" class="w-full bg-brandGold text-brandNavy font-black py-3.5 rounded-xl text-xs uppercase tracking-wide hover:bg-brandGoldHover transition shadow-lg flex justify-center items-center gap-2 mt-4">
           Submit Receipt To Admin
         </button>
       </form>
 
+    </div>
+  </div>
+
+  <!-- T&C POP-UP MODAL (Z-INDEX 60 SUPAYA DUDUK DI ATAS PAYMENT MODAL) -->
+  <div id="tncModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] flex items-center justify-center p-4 hidden">
+    <div class="bg-brandNavy rounded-3xl max-w-lg w-full p-6 text-white shadow-2xl relative border border-white/10 overflow-y-auto max-h-[85vh]">
+      
+      <!-- Close Button -->
+      <button onclick="closeTncModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold bg-brandNavy/80 rounded-full w-8 h-8 flex items-center justify-center backdrop-blur-md">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h3 class="text-lg font-black text-brandGold text-center mb-4 uppercase border-b border-white/10 pb-3 leading-tight">
+        Term and Condition (T&C) <br>
+        <span class="text-xs text-gray-400 capitalize font-semibold">Terma & Syarat Sewaan DJI Osmo</span>
+      </h3>
+
+      <!-- Isi Kandungan T&C (Boleh Scroll) -->
+      <div class="space-y-5 text-sm text-gray-300 pr-1">
+        
+        <!-- Syarat 1 -->
+        <div>
+          <h4 class="font-bold text-white mb-1">1. Eligibility & Documentation / Kelayakan & Dokumen</h4>
+          <ul class="list-disc pl-5 space-y-1 text-[11px] leading-relaxed">
+            <li>Renters must be 18 years of age or older. / Penyewa mestilah berumur 18 tahun ke atas.</li>
+            <li>A valid copy of an Identity Card (IC) or Passport must be submitted digitally prior to or during equipment collection / Salinan Kad Pengenalan (IC) atau Pasport yang sah wajib diserahkan digital sebelum/semasa mengambil barang.</li>
+            <li>Renters must provide at least one active social media profile (e.g: Facebook, Instagram, LinkedIn) for identity verification purposes / Penyewa perlu menyediakan sekurang-kurangnya satu pautan media sosial yang aktif.</li>
+          </ul>
+        </div>
+
+        <!-- Syarat 2 -->
+        <div>
+          <h4 class="font-bold text-white mb-1">2. Security Deposit / Deposit Keselamatan</h4>
+          <ul class="list-disc pl-5 space-y-1 text-[11px] leading-relaxed">
+            <li>A security deposit of RM 45 is required for each rented unit / Wang deposit sebanyak RM 45 diperlukan bagi setiap unit sewaan.</li>
+            <li>This deposit will be fully refunded within 24 hours after the equipment is returned in its original, clean, and working condition / Deposit akan dipulangkan sepenuhnya dalam masa 24 jam jika barang dipulangkan dalam keadaan baik dan bersih.</li>
+          </ul>
+        </div>
+
+        <!-- Syarat 3 -->
+        <div>
+          <h4 class="font-bold text-white mb-1">3. Rental Period & Late Fees / Tempoh & Kelewatan</h4>
+          <ul class="list-disc pl-5 space-y-1 text-[11px] leading-relaxed">
+            <li><strong>Collection & Return:</strong> Equipment must be picked up and returned at the agreed time and date / Barang mesti diambil dan dipulangkan pada masa yang dipersetujui.</li>
+            <li><strong>Late Fees:</strong> Late returns will incur a penalty fee of RM 10 per hour, or a full day's rental rate if the delay exceeds 3 hours without prior notice / Kelewatan akan didenda RM 10/jam ATAU sewa sehari penuh jika lewat lebih 3 jam tanpa notis.</li>
+          </ul>
+        </div>
+
+        <!-- Syarat 4 -->
+        <div>
+          <h4 class="font-bold text-white mb-1">4. Damage, Loss & Theft / Kerosakan & Kehilangan</h4>
+          <ul class="list-disc pl-5 space-y-1 text-[11px] leading-relaxed">
+            <li>The renter assumes full responsibility for the safety of the equipment / Penyewa bertanggungjawab sepenuhnya ke atas keselamatan gajet.</li>
+            <li><strong>Minor Cosmetic Damage:</strong> In the event of minor physical damage (scratches/cracks), the security deposit will be forfeited / Calar teruk atau kerosakan kosmetik ringan, deposit burn.</li>
+            <li><strong>Major Damage/Loss:</strong> If severely damaged, lost, or stolen, the renter is STRICTLY liable to cover official repair costs or full replacement value / Jika rosak teruk/masuk air/hilang, penyewa WAJIB tanggung kos baik pulih DJI atau bayar ganti rugi penuh 100%.</li>
+          </ul>
+        </div>
+
+        <!-- Syarat 5 -->
+        <div>
+          <h4 class="font-bold text-white mb-1">5. Cancellation Policy / Polisi Pembatalan</h4>
+          <ul class="list-disc pl-5 space-y-1 text-[11px] leading-relaxed">
+            <li>Cancellations less than 8 hours before rental: Booking fee is non-refundable / Batal kurang 8 jam: Deposit burn.</li>
+            <li>Cancellations more than 48 hours prior: Full refund or rescheduling / Batal lebih 48 jam awal: Boleh dipulangkan penuh atau tukar tarikh.</li>
+          </ul>
+        </div>
+
+      </div>
+      
+      <!-- Butang Tutup di Bawah -->
+      <button onclick="closeTncModal()" class="mt-6 w-full bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black py-3 rounded-xl text-xs uppercase tracking-wide transition shadow-lg flex justify-center items-center gap-2">
+        <i class="fa-solid fa-check"></i> Saya Faham & Setuju
+      </button>
     </div>
   </div>
 
@@ -411,7 +487,7 @@
 
   <!-- SCRIPT LOGIC -->
   <script>
-    // MASUKKAN API TOKEN BOT TELEGRAM BAHARU ANDA DI SINI
+    // API BOT TELEGRAM & GOOGLE CALENDAR
     const TELEGRAM_BOT_TOKEN = '8855826669:AAHVa062QXQXzAuvdyISkoa-Ifm3N2hR2Rs';
     const TELEGRAM_CHAT_ID = '578429174'; 
     const MY_CALENDAR_ID = '8451c5e4ac1b1a604e21ef369c1314070e987f1b9e55771b41531f3dacfc9a35@group.calendar.google.com';
@@ -515,7 +591,7 @@
       window.open(`https://wa.me/60${phoneNo}?text=${encodedMessage}`, '_blank');
     }
 
-    // --- MODAL & TELEGRAM BOT ---
+    // --- MODAL PEMBAYARAN ---
     function openPaymentModal() {
       document.getElementById('paymentModal').classList.remove('hidden');
     }
@@ -524,6 +600,16 @@
       document.getElementById('paymentModal').classList.add('hidden');
     }
 
+    // --- MODAL T&C ---
+    function openTncModal() {
+      document.getElementById('tncModal').classList.remove('hidden');
+    }
+
+    function closeTncModal() {
+      document.getElementById('tncModal').classList.add('hidden');
+    }
+
+    // --- TELEGRAM RESIT UPLOAD ---
     async function sendReceiptToTelegram(event) {
       event.preventDefault();
 
