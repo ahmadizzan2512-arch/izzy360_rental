@@ -41,7 +41,7 @@
     }
     
     .gold-glow {
-      box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
     }
 
     .brand-card {
@@ -305,11 +305,11 @@
         </a>
       </div>
 
-      <!-- Action Steps (Bukan butang biasa) -->
+      <!-- Action Steps -->
       <div class="space-y-3 text-left">
         <p class="text-xs font-bold text-gray-300 text-center mb-1 uppercase tracking-wider">Follow 2 Easy Steps To Book:</p>
 
-        <!-- STEP 1: FILL FORM FIRST -->
+        <!-- STEP 1: FILL FORM FIRST (ONCLICK TERUS UNLOCK) -->
         <a href="https://forms.gle/XJngcU99jv2oH68F7" target="_blank" onclick="unlockPaymentButton()" class="w-full bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2">
           <i class="fa-solid fa-file-signature text-lg"></i> 1. FILL IN RENTAL T&C FORM (GOOGLE FORM)
         </a>
@@ -423,18 +423,18 @@
       }
     });
 
-    // --- FUNCTION UNLOCK BUTTON PAYMENT ---
+    // --- FUNCTION UNLOCK BUTTON PAYMENT SERTAMERTA ---
     function unlockPaymentButton() {
       const payBtn = document.getElementById('payDepositBtn');
       const payLockIcon = document.getElementById('payLockIcon');
       const payBtnText = document.getElementById('payBtnText');
 
-      setTimeout(() => {
+      if (payBtn) {
         payBtn.disabled = false;
-        payBtn.className = "w-full bg-emerald-500 hover:bg-emerald-400 text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2 gold-glow";
+        payBtn.className = "w-full bg-emerald-500 hover:bg-emerald-400 text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2 gold-glow cursor-pointer";
         payLockIcon.className = "fa-solid fa-lock-open text-base";
         payBtnText.innerHTML = "2. PAY DEPOSIT NOW (RM45) 🔓";
-      }, 1000);
+      }
     }
 
     // --- CAMERA SALES SELECTION LOGIC ---
@@ -521,7 +521,6 @@
     }
 
     function closePaymentModal() {
-      document.getElementById('paymentModal').classList.hidden = true;
       document.getElementById('paymentModal').classList.add('hidden');
     }
 
