@@ -545,7 +545,7 @@
   <!-- SCRIPT LOGIC -->
   <script>
     // API BOT TELEGRAM & GOOGLE CALENDAR
-    const TELEGRAM_BOT_TOKEN = '8855826669:AAHVa062QXQXzAuvdyISkoa-Ifm3N2hR2Rs';
+    const TELEGRAM_BOT_TOKEN = '8855826669:AAHVa062QwQXzAuvdyISkoa-Ifm3N2hR2Rs';
     const TELEGRAM_CHAT_ID = '578429174'; 
     const MY_CALENDAR_ID = '8451c5e4ac1b1a604e21ef369c1314070e987f1b9e55771b41531f3dacfc9a35@group.calendar.google.com';
 
@@ -583,11 +583,10 @@
           discountText = "Potongan RM 10";
         } else if (days >= 8) {
           totalRental -= 15;
-          freeDaysCount = Math.floor(days / 8); // Contoh ringkas atau 1 hari free tambahan
+          freeDaysCount = Math.floor(days / 8);
           discountText = "Potongan RM 15 + 1 Hari Free";
         }
       } else {
-        // Student logic
         if (days >= 5 && days <= 6) {
           totalRental -= 5;
           discountText = "Potongan RM 5";
@@ -598,7 +597,7 @@
         }
       }
 
-      const totalOverall = totalRental + 45; // Deposit fixed RM 45
+      const totalOverall = totalRental + 45;
 
       document.getElementById('calcRateText').innerText = `RM ${rate} / hari`;
       document.getElementById('calcDiscountText').innerText = discountText;
