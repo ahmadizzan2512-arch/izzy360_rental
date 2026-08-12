@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IZZY360 RENTAL - Camera & Gear Rental</title>
+  <title>IZZY360 RENTAL - Official DJI Osmo Camera Rental</title>
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -11,119 +12,190 @@
       theme: {
         extend: {
           colors: {
-            brandNavy: '#0D1B2A',
-            brandBlue: '#1E3A8A',
-            brandGold: '#FFC107',
-            brandLight: '#F5F7FA',
+            brandNavy: '#0A1118',
+            brandCard: '#131F2D',
+            brandBlue: '#1E40AF',
+            brandGold: '#F59E0B',
+            brandGoldHover: '#D97706',
+            brandLight: '#F8FAFC',
           }
         }
       }
     }
   </script>
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* Custom Animation & Transition Styles */
+    /* Custom Styling & High-End Animations */
+    body {
+      background-color: #0A1118;
+      color: #E2E8F0;
+    }
+    
+    .glass-card {
+      background: rgba(19, 31, 45, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gold-glow {
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+    }
+
     .brand-card {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .brand-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     }
     .brand-card:hover .brand-bg {
       transform: scale(1.08);
     }
     .brand-card.active-brand {
-      border-color: #FFC107 !important;
-      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+      border-color: #F59E0B !important;
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
-<body class="bg-brandLight text-gray-800 font-sans antialiased">
+<body class="font-sans antialiased selection:bg-brandGold selection:text-brandNavy">
 
   <!-- Header / Navigation -->
-  <header class="bg-brandNavy text-white sticky top-0 z-40 shadow-md">
-    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+  <header class="bg-brandNavy/90 backdrop-blur-md sticky top-0 z-40 border-b border-white/10">
+    <div class="max-w-5xl mx-auto px-4 py-3.5 flex justify-between items-center">
       <div class="flex items-center space-x-2">
         <span class="text-2xl font-black text-brandGold tracking-wider">IZZY360</span>
-        <span class="text-xs uppercase tracking-widest text-gray-300">Rental</span>
+        <span class="text-[10px] bg-white/10 border border-white/20 text-gray-300 font-bold px-2 py-0.5 rounded uppercase tracking-widest">Osmo Hub</span>
       </div>
-      <a href="https://wa.me/60102258011" target="_blank" class="bg-brandGold text-brandNavy font-bold px-4 py-2 rounded-full text-sm hover:bg-yellow-400 transition">
-        <i class="fa-brands font-semibold fa-whatsapp mr-1"></i> Hubungi
+      <a href="https://wa.me/60102258011" target="_blank" class="bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black px-4 py-2 rounded-full text-xs transition flex items-center gap-1.5 shadow-lg">
+        <i class="fa-brands fa-whatsapp text-sm"></i> Hubungi Admin
       </a>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-b from-brandNavy to-brandBlue text-white py-12 px-4 text-center">
-    <div class="max-w-3xl mx-auto">
-      <span class="bg-brandGold/20 text-brandGold border border-brandGold px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
-        KL & Selangor & Terengganu
+  <section class="relative py-16 px-4 overflow-hidden text-center border-b border-white/10">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 bg-cover bg-center opacity-25" style="background-image: url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1200&auto=format&fit=crop');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-brandNavy/50 via-brandNavy/80 to-brandNavy"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <span class="inline-flex items-center gap-2 bg-brandGold/10 text-brandGold border border-brandGold/40 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+        <i class="fa-solid fa-camera text-brandGold"></i> Specialized In DJI Osmo Series
       </span>
-      <h1 class="text-3xl sm:text-5xl font-black mt-4 mb-2 tracking-tight">
-        CAPTURE EVERY ADVENTURE.
+      
+      <h1 class="text-3xl sm:text-5xl font-black text-white mt-2 mb-4 tracking-tight leading-tight">
+        Rakam Setiap Detik Kembara Dengan <span class="text-brandGold">DJI Osmo</span>
       </h1>
-      <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
-        Sewa & Jual Kamera DJI Osmo / Insta360 Kualiti Tinggi. Sesuai untuk Travel, Motor Ride, Vlog & Event!
+      
+      <p class="text-gray-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed mb-8">
+        Sewa & Beli Set Kamera <strong>DJI Osmo Pocket / Action / 360</strong> Lengkap Aksesori. Hasil Video Cinematic 4K Super Stable Untuk Motor Ride, Travel & Vlog!
       </p>
 
       <!-- CTA Action Buttons -->
-      <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-        <a href="#calendar-section" class="bg-brandGold text-brandNavy font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-yellow-400 transition flex items-center justify-center gap-2">
-          <i class="fa-solid fa-calendar-days text-lg"></i> Semak Jadual & Lock Tarikh
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+        <a href="#calendar-section" class="bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black px-6 py-3.5 rounded-xl shadow-xl transition flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-calendar-days text-base"></i> Semak Tarikh & Sewa
         </a>
-        <a href="https://forms.gle/XJngcU99jv2oH68F7" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold px-6 py-3 rounded-xl hover:bg-white/20 transition flex items-center justify-center gap-2">
-          <i class="fa-regular fa-file-lines"></i> Borang Tempahan Direct
+        <a href="#buy-section" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold px-6 py-3.5 rounded-xl transition flex items-center justify-center gap-2 text-sm">
+          <i class="fa-solid fa-cart-shopping"></i> Nak Beli Kamera Murah
         </a>
       </div>
     </div>
   </section>
 
-  <!-- BAHAGIAN 1: CARIAN JUALAN KAMERA MURAH (DJI / INSTA360) -->
-  <section class="py-10 px-4 max-w-3xl mx-auto">
-    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-200 text-center">
+  <!-- BAHAGIAN SHOWCASE KANDUNGAN / AK SESORI KAMERA -->
+  <section class="py-10 px-4 max-w-4xl mx-auto">
+    <div class="text-center mb-8">
+      <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Apa Yang Anda Dapat Dalam Set Sewaan?</h2>
+      <p class="text-gray-400 text-xs">Set lengkap sedia untuk shoot video terus tanpa perlu beli barang tambah!</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="glass-card p-4 rounded-2xl text-center border border-white/5 hover:border-brandGold/40 transition">
+        <div class="w-10 h-10 mx-auto bg-brandGold/10 text-brandGold rounded-xl flex items-center justify-center text-lg mb-2">
+          <i class="fa-solid fa-camera-rotate"></i>
+        </div>
+        <h3 class="text-xs font-bold text-white">DJI Osmo Unit</h3>
+        <p class="text-[10px] text-gray-400 mt-1">Lensa bersih 4K Ultra HD</p>
+      </div>
+
+      <div class="glass-card p-4 rounded-2xl text-center border border-white/5 hover:border-brandGold/40 transition">
+        <div class="w-10 h-10 mx-auto bg-brandGold/10 text-brandGold rounded-xl flex items-center justify-center text-lg mb-2">
+          <i class="fa-solid fa-battery-full"></i>
+        </div>
+        <h3 class="text-xs font-bold text-white">Dual Battery</h3>
+        <p class="text-[10px] text-gray-400 mt-1">Bateri penuh & Hub Charger</p>
+      </div>
+
+      <div class="glass-card p-4 rounded-2xl text-center border border-white/5 hover:border-brandGold/40 transition">
+        <div class="w-10 h-10 mx-auto bg-brandGold/10 text-brandGold rounded-xl flex items-center justify-center text-lg mb-2">
+          <i class="fa-solid fa-sd-card"></i>
+        </div>
+        <h3 class="text-xs font-bold text-white">High Speed SD</h3>
+        <p class="text-[10px] text-gray-400 mt-1">128GB / 256GB High-Speed</p>
+      </div>
+
+      <div class="glass-card p-4 rounded-2xl text-center border border-white/5 hover:border-brandGold/40 transition">
+        <div class="w-10 h-10 mx-auto bg-brandGold/10 text-brandGold rounded-xl flex items-center justify-center text-lg mb-2">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <h3 class="text-xs font-bold text-white">Monopod & Mount</h3>
+        <p class="text-[10px] text-gray-400 mt-1">Stick invisible & Mount Motor</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAHAGIAN 1: CARIAN JUALAN KAMERA MURAH (DJI OSMO SERIES) -->
+  <section id="buy-section" class="py-8 px-4 max-w-3xl mx-auto">
+    <div class="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 text-center relative overflow-hidden">
       
-      <span class="bg-brandGold/20 text-brandBlue border border-brandGold px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-        <i class="fa-solid fa-cart-shopping mr-1"></i> Jualan Kamera Murah & Original
+      <span class="bg-brandGold/20 text-brandGold border border-brandGold/40 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
+        <i class="fa-solid fa-tags mr-1"></i> Jualan Kamera Original & Refurbished
       </span>
       
-      <h2 class="text-2xl font-bold text-brandNavy mt-3 mb-2">Nak Beli Camera DJI Osmo / Insta360 Murah?</h2>
-      <p class="text-gray-500 text-xs mb-6">Pilih jenama dan model yang anda nak beli di bawah untuk terus semak harga & stok terkini di WhatsApp!</p>
+      <h2 class="text-2xl font-extrabold text-white mt-3 mb-2">Nak Beli Camera DJI Osmo Murah?</h2>
+      <p class="text-gray-400 text-xs mb-6">Pilih jenama dan model siri DJI yang anda nak beli di bawah untuk terus semak harga & stok terkini di WhatsApp!</p>
 
-      <!-- Step 1: Pilih Brand -->
+      <!-- Step 1: Pilih Brand (DJI Osmo Focus) -->
       <div class="mb-6">
-        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-3">1. Pilih Jenama Kamera:</label>
-        <div class="grid grid-cols-2 gap-4 sm:gap-6">
+        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">1. Pilih Jenama / Siri Kamera:</label>
+        <div class="grid grid-cols-2 gap-4">
           
-          <!-- Kad DJI -->
-          <button type="button" onclick="selectBuyBrand('DJI')" id="buy-btn-dji" class="brand-card relative h-48 sm:h-52 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
+          <!-- Kad DJI Osmo Official -->
+          <button type="button" onclick="selectBuyBrand('DJI')" id="buy-btn-dji" class="brand-card relative h-48 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
             <div class="brand-bg absolute inset-0 bg-cover bg-center transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=800&auto=format&fit=crop');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 group-hover:from-black/80 transition-opacity"></div>
             
             <div class="relative z-10 h-full p-4 flex flex-col justify-between">
               <span class="self-start text-[10px] uppercase font-black bg-brandGold text-brandNavy px-2.5 py-0.5 rounded-full tracking-wider shadow">DJI Official</span>
               <div>
-                <p class="text-white font-black text-lg sm:text-xl drop-shadow-md tracking-wide">DJI Osmo</p>
-                <p class="text-gray-300 text-xs font-medium">Action, Pocket & Drones</p>
+                <p class="text-white font-black text-lg drop-shadow">DJI Osmo</p>
+                <p class="text-gray-300 text-xs">Pocket, Action & Mobile</p>
               </div>
             </div>
           </button>
 
           <!-- Kad Insta360 -->
-          <button type="button" onclick="selectBuyBrand('Insta360')" id="buy-btn-insta" class="brand-card relative h-48 sm:h-52 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
+          <button type="button" onclick="selectBuyBrand('Insta360')" id="buy-btn-insta" class="brand-card relative h-48 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
             <div class="brand-bg absolute inset-0 bg-cover bg-center transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 group-hover:from-black/80 transition-opacity"></div>
             
             <div class="relative z-10 h-full p-4 flex flex-col justify-between">
               <div class="flex items-center gap-1">
-                <img src="https://api.iconify.design/simple-icons:insta360.svg" alt="Insta360" class="h-5 w-5 invert">
+                <img src="https://api.iconify.design/simple-icons:insta360.svg" alt="Insta360" class="h-4 w-4 invert">
                 <span class="text-[10px] uppercase font-black bg-white text-gray-900 px-2.5 py-0.5 rounded-full tracking-wider shadow">Insta360</span>
               </div>
               <div>
-                <p class="text-white font-black text-lg sm:text-xl drop-shadow-md tracking-wide">Insta360</p>
-                <p class="text-gray-300 text-xs font-medium">X, GO & Ace Pro Series</p>
+                <p class="text-white font-black text-lg drop-shadow">Insta360</p>
+                <p class="text-gray-300 text-xs">X & GO Series</p>
               </div>
             </div>
           </button>
@@ -133,15 +205,15 @@
 
       <!-- Step 2: Pilih Model -->
       <div id="buy-model-section" class="mb-6 hidden">
-        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">2. Pilih Model Nak Beli:</label>
-        <select id="buy-camera-model-select" class="w-full p-3.5 bg-gray-50 border-2 border-brandBlue rounded-xl text-sm font-semibold text-brandNavy focus:outline-none focus:ring-2 focus:ring-brandGold">
+        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">2. Pilih Model Nak Beli:</label>
+        <select id="buy-camera-model-select" class="w-full p-3.5 bg-brandNavy border-2 border-brandGold rounded-xl text-sm font-semibold text-white focus:outline-none">
           <option value="">-- Pilih Model --</option>
         </select>
       </div>
 
       <!-- Step 3: Butang Ke WhatsApp -->
       <div id="buy-whatsapp-action" class="hidden">
-        <p class="text-xs text-gray-500 mb-3">Pilih admin untuk order / tanya harga murah melalui WhatsApp:</p>
+        <p class="text-xs text-gray-400 mb-3">Pilih admin untuk order / tanya harga murah melalui WhatsApp:</p>
         <div class="grid sm:grid-cols-2 gap-3">
           <button type="button" onclick="sendBuyToWhatsApp('0102258011')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm">
             <i class="fa-brands fa-whatsapp text-lg"></i> Tanya Admin Isya
@@ -158,40 +230,43 @@
 
   <!-- Pricing Section -->
   <section class="py-10 px-4 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold text-center text-brandNavy mb-6">Kadar Sewaan DJI Osmo 360</h2>
+    <div class="text-center mb-8">
+      <h2 class="text-2xl font-black text-white mb-1">Kadar Sewaan DJI Osmo 360</h2>
+      <p class="text-xs text-gray-400">Harga paling berpatutan dengan perkhidmatan sokongan mesra!</p>
+    </div>
     
     <div class="grid md:grid-cols-2 gap-6">
       <!-- Non Student Card -->
-      <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-brandBlue transition">
+      <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-brandGold/40 transition">
         <div class="flex justify-between items-center mb-4">
-          <h3 class="font-bold text-xl text-brandNavy">NON-STUDENT</h3>
-          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Standard</span>
+          <h3 class="font-bold text-xl text-white">NON-STUDENT</h3>
+          <span class="text-[10px] bg-white/10 text-gray-300 px-2 py-1 rounded font-semibold uppercase">Standard</span>
         </div>
-        <ul class="space-y-3 mb-6 text-sm text-gray-700">
-          <li class="flex justify-between border-b pb-2"><span>1 - 2 Hari</span> <strong class="text-brandBlue">RM 45 / hari</strong></li>
-          <li class="flex justify-between border-b pb-2"><span>3 - 4 Hari</span> <strong class="text-brandBlue">RM 40 / hari</strong></li>
-          <li class="flex justify-between border-b pb-2"><span>5 - 10 Hari & ke atas</span> <span class="text-xs font-semibold bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">Boleh Bincang</span></li>
+        <ul class="space-y-3 mb-6 text-sm text-gray-300">
+          <li class="flex justify-between border-b border-white/10 pb-2"><span>1 - 2 Hari</span> <strong class="text-brandGold">RM 45 / hari</strong></li>
+          <li class="flex justify-between border-b border-white/10 pb-2"><span>3 - 4 Hari</span> <strong class="text-brandGold">RM 40 / hari</strong></li>
+          <li class="flex justify-between border-b border-white/10 pb-2"><span>5 - 10 Hari & ke atas</span> <span class="text-xs font-semibold bg-brandGold/20 text-brandGold px-2 py-0.5 rounded">Boleh Bincang</span></li>
         </ul>
-        <a href="#calendar-section" class="block text-center w-full py-2.5 rounded-lg border-2 border-brandBlue text-brandBlue font-bold hover:bg-brandBlue hover:text-white transition text-sm">
+        <a href="#calendar-section" class="block text-center w-full py-3 rounded-xl border border-brandGold text-brandGold font-bold hover:bg-brandGold hover:text-brandNavy transition text-xs uppercase tracking-wider">
           Tempah Kadar Standard
         </a>
       </div>
 
       <!-- Student Card -->
-      <div class="bg-white p-6 rounded-2xl shadow-md border-2 border-brandGold relative">
-        <span class="absolute -top-3 right-4 bg-brandGold text-brandNavy font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+      <div class="glass-card p-6 rounded-2xl border-2 border-brandGold relative gold-glow">
+        <span class="absolute -top-3 right-4 bg-brandGold text-brandNavy font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow">
           Paling Jimat
         </span>
         <div class="flex justify-between items-center mb-4">
-          <h3 class="font-bold text-xl text-brandNavy">STUDENT</h3>
-          <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-medium">Khas Pelajar</span>
+          <h3 class="font-bold text-xl text-white">STUDENT</h3>
+          <span class="text-[10px] bg-brandGold/20 text-brandGold px-2 py-1 rounded font-semibold uppercase">Khas Pelajar</span>
         </div>
-        <ul class="space-y-3 mb-6 text-sm text-gray-700">
-          <li class="flex justify-between border-b pb-2"><span>1 - 2 Hari</span> <strong class="text-brandBlue">RM 40 / hari</strong></li>
-          <li class="flex justify-between border-b pb-2"><span>3 - 4 Hari</span> <strong class="text-brandBlue">RM 35 / hari</strong></li>
-          <li class="text-xs text-gray-500 italic">* Perlu tunjuk Kad Pelajar semasa pengesahan</li>
+        <ul class="space-y-3 mb-6 text-sm text-gray-300">
+          <li class="flex justify-between border-b border-white/10 pb-2"><span>1 - 2 Hari</span> <strong class="text-brandGold">RM 40 / hari</strong></li>
+          <li class="flex justify-between border-b border-white/10 pb-2"><span>3 - 4 Hari</span> <strong class="text-brandGold">RM 35 / hari</strong></li>
+          <li class="text-xs text-gray-400 italic">* Perlu tunjuk Kad Pelajar semasa pengesahan</li>
         </ul>
-        <a href="#calendar-section" class="block text-center w-full py-2.5 rounded-lg bg-brandGold text-brandNavy font-bold hover:bg-yellow-400 transition text-sm">
+        <a href="#calendar-section" class="block text-center w-full py-3 rounded-xl bg-brandGold text-brandNavy font-black hover:bg-brandGoldHover transition text-xs uppercase tracking-wider shadow-lg">
           Tempah Kadar Pelajar
         </a>
       </div>
@@ -200,19 +275,18 @@
 
   <!-- BAHAGIAN 2: GOOGLE CALENDAR & LOCK TEMPAHAN -->
   <section id="calendar-section" class="py-10 px-4 max-w-3xl mx-auto">
-    <div class="bg-brandNavy text-white p-6 sm:p-8 rounded-3xl shadow-xl border-2 border-brandGold text-center">
+    <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-brandGold/60 text-center relative">
       
-      <!-- Header Badge -->
-      <span class="inline-flex items-center gap-2 bg-yellow-400/20 text-brandGold border border-brandGold px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-        <i class="fa-solid fa-calendar-check text-yellow-400"></i> Semak Tarikh Live
+      <span class="inline-flex items-center gap-2 bg-brandGold/20 text-brandGold border border-brandGold/40 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+        <i class="fa-solid fa-calendar-check"></i> Semak Tarikh Live
       </span>
-      <h2 class="text-2xl font-bold mb-2">Jadual Ketersediaan Kamera</h2>
+      <h2 class="text-2xl font-black text-white mb-2">Jadual Ketersediaan Kamera</h2>
       <p class="text-gray-300 text-xs max-w-md mx-auto mb-6">
         Sila semak kalendar di bawah. Tarikh yang bertanda <strong>BOOKED / BUSY</strong> bermaksud telah berpunya. Jika tarikh anda KOSONG, sila tekan butang bayar di bawah!
       </p>
 
       <!-- Embedded Google Calendar -->
-      <div class="bg-white rounded-2xl p-2 sm:p-4 shadow-inner mb-6 overflow-hidden">
+      <div class="bg-white rounded-2xl p-2 sm:p-3 shadow-2xl mb-6 overflow-hidden">
         <iframe id="google-calendar-iframe" 
                 src="" 
                 style="border: 0" 
@@ -225,13 +299,13 @@
       </div>
 
       <!-- Action Button (Buka Modal Bayar) -->
-      <button onclick="openPaymentModal()" class="w-full bg-brandGold hover:bg-yellow-400 text-brandNavy font-black py-4 px-6 rounded-2xl text-sm uppercase tracking-wide transition shadow-lg flex items-center justify-center gap-2">
+      <button onclick="openPaymentModal()" class="w-full bg-brandGold hover:bg-brandGoldHover text-brandNavy font-black py-4 px-6 rounded-2xl text-xs sm:text-sm uppercase tracking-wide transition shadow-xl flex items-center justify-center gap-2">
         <i class="fa-solid fa-wallet text-lg"></i> Tarikh Saya Kosong - BUAT PEMBAYARAN DEPOSIT (RM45)
       </button>
 
       <!-- Hubungi Admin Direct -->
       <div class="mt-6 pt-4 border-t border-white/10 text-center">
-        <p class="text-xs text-gray-300 mb-3">Musykil tentang tarikh? WhatsApp terus admin:</p>
+        <p class="text-xs text-gray-400 mb-3">Musykil tentang tarikh? WhatsApp terus admin:</p>
         <div class="flex justify-center gap-3">
           <a href="https://wa.me/60102258011" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition">
             <i class="fa-brands fa-whatsapp mr-1"></i> Admin Isya
@@ -246,52 +320,53 @@
   </section>
 
   <!-- POP-UP MODAL PEMBAYARAN & UPLOAD RESIT -->
-  <div id="paymentModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 text-gray-800 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+  <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-brandNavy rounded-3xl max-w-md w-full p-6 text-white shadow-2xl relative border border-white/10 overflow-y-auto max-h-[90vh]">
       
       <!-- Close Button -->
-      <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-xl font-bold">
+      <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <h3 class="text-xl font-black text-brandNavy text-center mb-1">Bayaran Deposit RM 45</h3>
-      <p class="text-xs text-gray-500 text-center mb-4">Sila imbas QR atau buat pindahan bank untuk teruskan.</p>
+      <h3 class="text-xl font-black text-brandGold text-center mb-1">Bayaran Deposit RM 45</h3>
+      <p class="text-xs text-gray-400 text-center mb-4">Sila imbas QR atau buat pindahan bank untuk teruskan.</p>
 
       <!-- Maklumat Bank & QR -->
-      <div class="bg-brandLight p-4 rounded-2xl border border-gray-200 text-center mb-4">
+      <div class="glass-card p-4 rounded-2xl border border-white/10 text-center mb-4">
+        <!-- QR Code Placeholder -->
         <div class="w-40 h-40 mx-auto bg-white p-2 rounded-xl border border-gray-300 shadow-sm mb-3">
           <img src="https://via.placeholder.com/200x200?text=Maybank+QR+Isya" alt="DuitNow QR Maybank Isya" class="w-full h-full object-contain rounded-lg">
         </div>
         
         <div class="text-xs space-y-1">
-          <p class="text-gray-500 font-semibold">Akaun Maybank:</p>
-          <p class="text-base font-black text-brandBlue tracking-wider select-all">1647 6228 2762</p>
-          <p class="font-bold text-gray-700">NUR ISYA / IZZY360 RENTAL</p>
+          <p class="text-gray-400 font-semibold">Akaun Maybank:</p>
+          <p class="text-base font-black text-brandGold tracking-wider select-all">1647 6228 2762</p>
+          <p class="font-bold text-gray-200">NUR ISYA / IZZY360 RENTAL</p>
         </div>
       </div>
 
       <!-- Borang Upload Resit & Maklumat Ringkas -->
       <form id="telegram-receipt-form" onsubmit="sendReceiptToTelegram(event)" class="space-y-3">
         <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1">Nombor Telefon (WhatsApp):</label>
-          <input type="tel" id="userPhone" required placeholder="Contoh: 0123456789" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-xl text-xs font-semibold focus:outline-none focus:border-brandBlue">
+          <label class="block text-xs font-bold text-gray-300 mb-1">Nombor Telefon (WhatsApp):</label>
+          <input type="tel" id="userPhone" required placeholder="Contoh: 0123456789" class="w-full p-3 bg-white/5 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:border-brandGold">
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1">Tarikh Sewa Mula - Tamat:</label>
-          <input type="text" id="userDates" required placeholder="Contoh: 20/08/2026 - 22/08/2026" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-xl text-xs font-semibold focus:outline-none focus:border-brandBlue">
+          <label class="block text-xs font-bold text-gray-300 mb-1">Tarikh Sewa Mula - Tamat:</label>
+          <input type="text" id="userDates" required placeholder="Contoh: 20/08/2026 - 22/08/2026" class="w-full p-3 bg-white/5 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:border-brandGold">
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1">Muat Naik Resit Pembayaran (Gambar / PDF):</label>
-          <input type="file" id="userReceipt" accept="image/*,.pdf" required class="w-full p-2 bg-gray-50 border border-gray-300 rounded-xl text-xs text-gray-500">
+          <label class="block text-xs font-bold text-gray-300 mb-1">Muat Naik Resit Pembayaran (Gambar / PDF):</label>
+          <input type="file" id="userReceipt" accept="image/*,.pdf" required class="w-full p-2 bg-white/5 border border-white/20 rounded-xl text-xs text-gray-400">
         </div>
 
-        <p class="text-[10px] text-amber-700 bg-amber-50 p-2.5 rounded-lg border border-amber-200 leading-tight">
+        <p class="text-[10px] text-amber-300 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20 leading-tight">
           <i class="fa-solid fa-circle-info"></i> Resit anda akan dihantar terus ke Telegram pentadbir untuk pengesahan segera.
         </p>
 
-        <button type="submit" id="submitBtn" class="w-full bg-brandGold text-brandNavy font-black py-3 rounded-xl text-xs uppercase tracking-wide hover:bg-yellow-400 transition shadow-md flex justify-center items-center gap-2">
+        <button type="submit" id="submitBtn" class="w-full bg-brandGold text-brandNavy font-black py-3.5 rounded-xl text-xs uppercase tracking-wide hover:bg-brandGoldHover transition shadow-lg flex justify-center items-center gap-2">
           Hantar Resit & Teruskan Ke Borang T&C
         </button>
       </form>
@@ -300,15 +375,15 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-6 text-center text-xs border-t border-gray-800">
+  <footer class="bg-black py-8 text-center text-xs border-t border-white/10 text-gray-500">
     <div class="max-w-4xl mx-auto px-4">
-      <p class="mb-3 font-semibold text-gray-300">@izzy360rental | @izzyrental</p>
-      <div class="flex justify-center gap-4 text-base mb-4 text-gray-300">
-        <a href="#" class="hover:text-brandGold"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="#" class="hover:text-brandGold"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="hover:text-brandGold"><i class="fa-brands fa-facebook"></i></a>
+      <p class="mb-3 font-semibold text-gray-400">@izzy360rental | @izzyrental</p>
+      <div class="flex justify-center gap-5 text-lg mb-4 text-gray-400">
+        <a href="#" class="hover:text-brandGold transition"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="hover:text-brandGold transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-brandGold transition"><i class="fa-brands fa-facebook"></i></a>
       </div>
-      <p>© 2026 IZZY360 RENTAL. Safe, Reliable & Worry Free.</p>
+      <p>© 2026 IZZY360 RENTAL. Official DJI Osmo Rental & Sales.</p>
     </div>
   </footer>
 
@@ -327,55 +402,29 @@
       }
     });
 
-    // --- LOGIK JUALAN KAMERA (LENGKAP SEMUA SIRI) ---
+    // --- LOGIK JUALAN KAMERA (LENGKAP DJI OSMO FOCUS) ---
     let selectedBuyBrand = '';
 
     const buyModels = {
       'DJI': [
-        // Pocket Series
         'DJI Osmo Pocket 3',
         'DJI Pocket 2',
-        'DJI Osmo Pocket (Gen 1)',
-        // Action Series
         'DJI Osmo Action 5 Pro',
         'DJI Osmo Action 4',
         'DJI Osmo Action 3',
         'DJI Action 2',
-        'DJI Osmo Action (Gen 1)',
-        // Gimbal Series
         'DJI Osmo Mobile 6 (OM6)',
         'DJI Osmo Mobile SE',
-        'DJI Osmo Mobile 5 (OM5)',
-        // Drones / Aerial
         'DJI Mini 4 Pro',
-        'DJI Mini 3 Pro / Mini 3',
-        'DJI Avata 2 / Avata',
-        'DJI Neo',
-        // Audio
-        'DJI Mic 2',
-        'DJI Mic',
-        'Model DJI Lain / Aksesori'
+        'DJI Avata 2',
+        'DJI Mic 2 / Audio'
       ],
       'Insta360': [
-        // 360 X Series
-        'Insta360 X5 Pro / X5',
         'Insta360 X4',
         'Insta360 X3',
-        'Insta360 ONE X2',
-        'Insta360 ONE X',
-        // Tiny GO Series
         'Insta360 GO 3S',
-        'Insta360 GO 3',
-        'Insta360 GO 2',
-        // Ace / Action Series
         'Insta360 Ace Pro 2',
-        'Insta360 Ace Pro',
-        'Insta360 Ace',
-        // Modular & Gimbal
-        'Insta360 ONE RS (1-Inch 360 / Twin)',
-        'Insta360 ONE R',
-        'Insta360 Flow (Smartphone Gimbal)',
-        'Model Insta360 Lain / Aksesori'
+        'Insta360 Flow'
       ]
     };
 
@@ -413,7 +462,7 @@
       const selectedModel = modelSelect.value;
 
       if (!selectedBuyBrand) {
-        alert('Sila pilih Jenama Kamera (DJI atau Insta360) terlebih dahulu.');
+        alert('Sila pilih Jenama Kamera terlebih dahulu.');
         return;
       }
 
@@ -453,7 +502,6 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sedang Dihantar...';
 
-      // Semak jenis fail (Gambar vs PDF)
       const isDocument = fileInput.type.includes('pdf') || !fileInput.type.includes('image');
       const apiEndpoint = isDocument ? 'sendDocument' : 'sendPhoto';
       const fileParamName = isDocument ? 'document' : 'photo';
@@ -477,11 +525,9 @@
           window.open('https://forms.gle/XJngcU99jv2oH68F7', '_blank');
         } else {
           alert(`Gagal dihantar!\nSebab Ralat: ${result.description}`);
-          console.error('Telegram Error:', result);
         }
       } catch (error) {
         alert('Ralat sambungan internet. Sila cuba lagi.');
-        console.error('Network Error:', error);
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Hantar Resit & Teruskan Ke Borang T&C';
