@@ -22,6 +22,24 @@
   </script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Custom Animation & Transition Styles */
+    .brand-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .brand-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    .brand-card:hover .brand-bg {
+      transform: scale(1.08);
+    }
+    .brand-card.active-brand {
+      border-color: #FFC107 !important;
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+    }
+  </style>
 </head>
 <body class="bg-brandLight text-gray-800 font-sans antialiased">
 
@@ -74,26 +92,50 @@
       <h2 class="text-2xl font-bold text-brandNavy mt-3 mb-2">Nak Beli Camera DJI Osmo / Insta360 Murah?</h2>
       <p class="text-gray-500 text-xs mb-6">Pilih jenama dan model yang anda nak beli di bawah untuk terus semak harga & stok terkini di WhatsApp!</p>
 
-            <!-- Step 1: Pilih Brand -->
+      <!-- Step 1: Pilih Brand (Dengan Latar Belakang Gambar Full & Animasi) -->
       <div class="mb-6">
         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-3">1. Pilih Jenama Kamera:</label>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-4 sm:gap-6">
           
-          <!-- Butang DJI Logo -->
-          <button type="button" onclick="selectBuyBrand('DJI')" id="buy-btn-dji" class="border-2 border-gray-200 hover:border-brandBlue p-5 rounded-2xl flex flex-col items-center justify-center transition bg-brandLight hover:shadow-md">
-            <img src="https://cdn.jsdelivr.net/npm/@simple-icons/simple-icons@v9/icons/dji.svg" alt="DJI Logo" class="h-8 w-auto mb-3 object-contain">
-            <span class="font-bold text-sm text-brandNavy">DJI Osmo Series</span>
+          <!-- Kad DJI -->
+          <button type="button" onclick="selectBuyBrand('DJI')" id="buy-btn-dji" class="brand-card relative h-48 sm:h-52 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
+            <!-- Background Image -->
+            <div class="brand-bg absolute inset-0 bg-cover bg-center transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=800&auto=format&fit=crop');"></div>
+            <!-- Dark Overlay for Readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 group-hover:from-black/80 transition-opacity"></div>
+            
+            <!-- Content Inside Card -->
+            <div class="relative z-10 h-full p-4 flex flex-col justify-between">
+              <span class="self-start text-[10px] uppercase font-black bg-brandGold text-brandNavy px-2.5 py-0.5 rounded-full tracking-wider shadow">DJI Official</span>
+              <div>
+                <p class="text-white font-black text-lg sm:text-xl drop-shadow-md tracking-wide">DJI Osmo</p>
+                <p class="text-gray-300 text-xs font-medium">Action & Pocket Series</p>
+              </div>
+            </div>
           </button>
 
-          <!-- Butang Insta360 Logo -->
-          <button type="button" onclick="selectBuyBrand('Insta360')" id="buy-btn-insta" class="border-2 border-gray-200 hover:border-brandBlue p-5 rounded-2xl flex flex-col items-center justify-center transition bg-brandLight hover:shadow-md">
-            <img src="https://api.iconify.design/simple-icons:insta360.svg" alt="Insta360 Logo" class="h-8 w-auto mb-3 object-contain">
-            <span class="font-bold text-sm text-brandNavy">Insta360 Series</span>
+          <!-- Kad Insta360 -->
+          <button type="button" onclick="selectBuyBrand('Insta360')" id="buy-btn-insta" class="brand-card relative h-48 sm:h-52 rounded-2xl overflow-hidden border-2 border-transparent group text-left w-full focus:outline-none">
+            <!-- Background Image -->
+            <div class="brand-bg absolute inset-0 bg-cover bg-center transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop');"></div>
+            <!-- Dark Overlay for Readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 group-hover:from-black/80 transition-opacity"></div>
+            
+            <!-- Content Inside Card -->
+            <div class="relative z-10 h-full p-4 flex flex-col justify-between">
+              <div class="flex items-center gap-1">
+                <img src="https://api.iconify.design/simple-icons:insta360.svg" alt="Insta360" class="h-5 w-5 invert">
+                <span class="text-[10px] uppercase font-black bg-white text-gray-900 px-2.5 py-0.5 rounded-full tracking-wider shadow">Insta360</span>
+              </div>
+              <div>
+                <p class="text-white font-black text-lg sm:text-xl drop-shadow-md tracking-wide">Insta360</p>
+                <p class="text-gray-300 text-xs font-medium">360° & GO Series</p>
+              </div>
+            </div>
           </button>
 
         </div>
       </div>
-
 
       <!-- Step 2: Pilih Model -->
       <div id="buy-model-section" class="mb-6 hidden">
@@ -313,13 +355,16 @@
     function selectBuyBrand(brand) {
       selectedBuyBrand = brand;
       
-      document.getElementById('buy-btn-dji').classList.remove('border-brandGold', 'bg-yellow-50');
-      document.getElementById('buy-btn-insta').classList.remove('border-brandGold', 'bg-yellow-50');
+      const djiBtn = document.getElementById('buy-btn-dji');
+      const instaBtn = document.getElementById('buy-btn-insta');
+
+      djiBtn.classList.remove('active-brand');
+      instaBtn.classList.remove('active-brand');
 
       if(brand === 'DJI') {
-        document.getElementById('buy-btn-dji').classList.add('border-brandGold', 'bg-yellow-50');
+        djiBtn.classList.add('active-brand');
       } else {
-        document.getElementById('buy-btn-insta').classList.add('border-brandGold', 'bg-yellow-50');
+        instaBtn.classList.add('active-brand');
       }
 
       const modelSelect = document.getElementById('buy-camera-model-select');
